@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <test-set xmlns="http://www.w3.org/2010/09/qt-fots-catalog"
-          name="misc-UCACollation" covers-40="PR1093">
-  <description>Tests for fn:collation()</description>
+          name="fn-collation" covers-40="PR1093">
+  <description>Tests for fn:collation() (note, tests derived directly from the misc-UCACollation tests)</description>
    
   <dependency type="spec" value="XP40+ XQ40+"/>
 
@@ -9,7 +9,7 @@
   <test-case name="fn-collation-001">
       <description>strength Primary</description>
       <created by="Michael Kay" on="2024-03-17"/>
-      <test>compare('abc','aBC',collation(map{'strength':'primary','fallback':false()}))</test>
+      <test>compare('abc','aBC',collation({'strength':'primary','fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>0</assert-eq>
@@ -21,7 +21,7 @@
    <test-case name="fn-collation-002">
       <description>strength secondary</description>
       <created by="Michael Kay" on="2024-03-17"/>
-      <test>compare('abc','aBC',collation(map{'strength':'secondary','fallback':false()}))</test>
+      <test>compare('abc','aBC',collation({'strength':'secondary','fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>0</assert-eq>
@@ -33,7 +33,7 @@
    <test-case name="fn-collation-003">
       <description>strength tertiary</description>
       <created by="Michael Kay" on="2024-03-17"/>
-      <test>compare('abc','aBC',collation(map{'strength':'tertiary','fallback':false()}))</test>
+      <test>compare('abc','aBC',collation({'strength':'tertiary','fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>0</assert-eq>
@@ -45,7 +45,7 @@
    <test-case name="fn-collation-004">
       <description>strength quaternary</description>
       <created by="Michael Kay" on="2024-03-17"/>
-      <test>compare('abc','aBC',collation(map{'strength':'quaternary','fallback':false()}))</test>
+      <test>compare('abc','aBC',collation({'strength':'quaternary','fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>0</assert-eq>
@@ -57,7 +57,7 @@
    <test-case name="fn-collation-005">
       <description>strength identical</description>
       <created by="Michael Kay" on="2024-03-17"/>
-      <test>compare('abc','aBC',collation(map{'strength':'identical','fallback':false()}))</test>
+      <test>compare('abc','aBC',collation({'strength':'identical','fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>0</assert-eq>
@@ -69,7 +69,7 @@
    <test-case name="fn-collation-006">
       <description>strength 1</description>
       <created by="Michael Kay" on="2024-03-17"/>
-      <test>compare('abc','aBC',collation(map{'strength':'1','fallback':false()}))</test>
+      <test>compare('abc','aBC',collation({'strength':'1','fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>0</assert-eq>
@@ -81,7 +81,7 @@
    <test-case name="fn-collation-007">
       <description>strength 2</description>
       <created by="Michael Kay" on="2024-03-17"/>
-      <test>compare('abc','aBC',collation(map{'strength':'2','fallback':false()}))</test>
+      <test>compare('abc','aBC',collation({'strength':'2','fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>0</assert-eq>
@@ -93,7 +93,7 @@
    <test-case name="fn-collation-008">
       <description>strength 3</description>
       <created by="Michael Kay" on="2024-03-17"/>
-      <test>compare('abc','aBC',collation(map{'strength':'3','fallback':false()}))</test>
+      <test>compare('abc','aBC',collation({'strength':'3','fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>0</assert-eq>
@@ -105,7 +105,7 @@
    <test-case name="fn-collation-009">
       <description>strength 4</description>
       <created by="Michael Kay" on="2024-03-17"/>
-      <test>compare('abc','aBC',collation(map{'strength':'4','fallback':false()}))</test>
+      <test>compare('abc','aBC',collation({'strength':'4','fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>0</assert-eq>
@@ -117,7 +117,7 @@
    <test-case name="fn-collation-010">
       <description>strength 5</description>
       <created by="Michael Kay" on="2024-03-17"/>
-      <test>compare('abc','aBC',collation(map{'strength':'5','fallback':false()}))</test>
+      <test>compare('abc','aBC',collation({'strength':'5','fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>0</assert-eq>
@@ -129,7 +129,7 @@
    <test-case name="fn-collation-011">
       <description>Ignore punctuation - primary</description>
       <created by="Michael Kay" on="2024-03-17"/>
-      <test>compare('a-bc','abc',collation(map{'strength':'1','alternate':'shifted','fallback':false()}))</test>
+      <test>compare('a-bc','abc',collation({'strength':'1','alternate':'shifted','fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>0</assert-eq>
@@ -141,7 +141,7 @@
    <test-case name="fn-collation-012">
       <description>Ignore punctuation - secondary</description>
       <created by="Michael Kay" on="2024-03-17"/>
-      <test>compare('a-bc','abc',collation(map{'strength':'2','alternate':'shifted','fallback':false()}))</test>
+      <test>compare('a-bc','abc',collation({'strength':'2','alternate':'shifted','fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>0</assert-eq>
@@ -153,7 +153,7 @@
    <test-case name="fn-collation-013">
       <description>Ignore punctuation - tertiary</description>
       <created by="Michael Kay" on="2024-03-17"/>
-      <test>compare('a-bc','abc',collation(map{'strength':'3','alternate':'shifted','fallback':false()}))</test>
+      <test>compare('a-bc','abc',collation({'strength':'3','alternate':'shifted','fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>0</assert-eq>
@@ -162,12 +162,11 @@
       </result>
    </test-case>
    
-  <!-- <test-case name="fn-collation-014">
+  <test-case name="fn-collation-014">
       <description>Ignore punctuation - quaternary</description>
       <created by="John Lumley" on="2014-05-02"/>
       <modified by="Michael Kay" on="2015-12-02" change="Bug 29308: disallow fallback behaviour"/>
-      <environment ref="UCA-collation.en"/>
-      <test>compare('a-bc','abc',concat($collation,'strength=4;alternate=shifted;fallback=no'))</test>
+      <test>compare('a-bc','abc',collation({'strength':'4','alternate':'shifted','fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>-1</assert-eq>
@@ -179,8 +178,7 @@
       <description>Ignore punctuation - identical</description>
       <created by="John Lumley" on="2014-05-02"/>
       <modified by="Michael Kay" on="2015-12-02" change="Bug 29308: disallow fallback behaviour"/>
-      <environment ref="UCA-collation.en"/>
-      <test>compare('a-bc','abc',concat($collation,'strength=5;alternate=shifted;fallback=no'))</test>
+      <test>compare('a-bc','abc',collation({'strength':'5','alternate':'shifted',,'fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>-1</assert-eq>
@@ -192,8 +190,7 @@
       <description>Check not backwards - primary</description>
       <created by="John Lumley" on="2014-05-02"/>
       <modified by="Michael Kay" on="2015-12-02" change="Bug 29308: disallow fallback behaviour"/>
-      <environment ref="UCA-collation.en"/>
-      <test>compare('pêche','péché',concat($collation,'strength=primary;fallback=no'))</test>
+      <test>compare('pêche','péché',collation({'strength':'primary','fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>0</assert-eq>
@@ -204,8 +201,7 @@
    <test-case name="fn-collation-017">
       <description>Check not backwards - secondary</description>
       <created by="John Lumley" on="2014-05-02"/>
-      <environment ref="UCA-collation.en"/>
-      <test>compare('pêche','péché',concat($collation,'strength=secondary;fallback=no'))</test>
+      <test>compare('pêche','péché',collation({'strength':'secondary','fallback':false()))</test>
       <result>
          <any-of>
             <assert-eq>1</assert-eq>
@@ -217,8 +213,7 @@
       <description>Check backwards - primary</description>
       <created by="John Lumley" on="2014-05-02"/>
       <modified by="Michael Kay" on="2015-12-02" change="Bug 29308: disallow fallback behaviour"/>
-      <environment ref="UCA-collation.en"/>
-      <test>compare('pêche','péché',concat($collation,'strength=secondary;backwards=yes;fallback=no'))</test>
+      <test>compare('pêche','péché',collation({''strength':'secondary','backwards':true(),'fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>-1</assert-eq>
@@ -230,8 +225,7 @@
       <description>Check backwards - secondary</description>
       <created by="John Lumley" on="2014-05-02"/>
       <modified by="Michael Kay" on="2015-12-02" change="Bug 29308: disallow fallback behaviour"/>
-      <environment ref="UCA-collation.en"/>
-      <test>compare('pêche','péché',concat($collation,'strength=secondary;backwards=no;fallback=no'))</test>
+      <test>compare('pêche','péché',collation({''strength':'secondary','backwards':false(),'fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>1</assert-eq>
@@ -243,8 +237,7 @@
       <description>Check normalization - no</description>
       <created by="John Lumley" on="2014-05-02"/>
       <modified by="Michael Kay" on="2015-12-02" change="Bug 29308: disallow fallback behaviour"/>
-      <environment ref="UCA-collation.en"/>
-      <test>compare('pêche','péché',concat($collation,'strength=secondary;normalization=no;fallback=no'))</test>
+      <test>compare('pêche','péché',collation({''strength':'secondary','normalization':false(),'fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>1</assert-eq>
@@ -256,8 +249,7 @@
       <description>Check normalization - yes</description>
       <created by="John Lumley" on="2014-05-02"/>
       <modified by="Michael Kay" on="2015-12-02" change="Bug 29308: disallow fallback behaviour"/>
-      <environment ref="UCA-collation.en"/>
-      <test>compare('pêche','péché',concat($collation,'strength=secondary;normalization=yes;fallback=no'))</test>
+      <test>compare('pêche','péché',collation({''strength':'secondary','normalization':true(),'fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>1</assert-eq>
@@ -269,8 +261,7 @@
       <description>Check caseLevel - primary</description>
       <created by="John Lumley" on="2014-05-02"/>
       <modified by="Michael Kay" on="2015-12-02" change="Bug 29308: disallow fallback behaviour"/>
-      <environment ref="UCA-collation.en"/>
-      <test>compare('Epee','épee',concat($collation,'strength=primary;caseLevel=yes;fallback=no'))</test>
+      <test>compare('Epee','épee',collation({''strength':'primary','case-level':true(),'fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>1</assert-eq>
@@ -282,8 +273,7 @@
       <description>Check caseLevel - primary</description>
       <created by="John Lumley" on="2014-05-02"/>
       <modified by="Michael Kay" on="2015-12-02" change="Bug 29308: disallow fallback behaviour"/>
-      <environment ref="UCA-collation.en"/>
-      <test>compare('Epee','épee',concat($collation,'strength=primary;caseLevel=no;fallback=no'))</test>
+      <test>compare('Epee','épee',collation({''strength':'primary','case-level':false(),'fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>0</assert-eq>
@@ -295,8 +285,7 @@
       <description>Check caseLevel - primary</description>
       <created by="John Lumley" on="2014-05-02"/>
       <modified by="Michael Kay" on="2015-12-02" change="Bug 29308: disallow fallback behaviour"/>
-      <environment ref="UCA-collation.en"/>
-      <test>compare('Epee','Épee',concat($collation,'strength=primary;caseLevel=yes;fallback=no'))</test>
+      <test>compare('Epee','Épee',collation({''strength':'primary','case-level':true(),'fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>0</assert-eq>
@@ -308,8 +297,7 @@
       <description>Check caseLevel - primary</description>
       <created by="John Lumley" on="2014-05-02"/>
       <modified by="Michael Kay" on="2015-12-02" change="Bug 29308: disallow fallback behaviour"/>
-      <environment ref="UCA-collation.en"/>
-      <test>compare('Epee','Épee',concat($collation,'strength=primary;caseLevel=no;fallback=no'))</test>
+      <test>compare('Epee','Épee',collation({''strength':'primary','case-level':false(),'fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>0</assert-eq>
@@ -321,8 +309,7 @@
       <description>Check caseLevel - secondary - no effect</description>
       <created by="John Lumley" on="2014-05-02"/>
       <modified by="Michael Kay" on="2015-12-02" change="Bug 29308: disallow fallback behaviour"/>
-      <environment ref="UCA-collation.en"/>
-      <test>compare('Epee','épee',concat($collation,'strength=secondary;caseLevel=yes;fallback=no'))</test>
+      <test>compare('Epee','épee',collation({''strength':'secondary','case-level':true(),'fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>-1</assert-eq>
@@ -334,8 +321,7 @@
       <description>Check caseLevel - secondary - no effect</description>
       <created by="John Lumley" on="2014-05-02"/>
       <modified by="Michael Kay" on="2015-12-02" change="Bug 29308: disallow fallback behaviour"/>
-      <environment ref="UCA-collation.en"/>
-      <test>compare('Epee','épee',concat($collation,'strength=secondary;caseLevel=no;fallback=no'))</test>
+      <test>compare('Epee','épee',collation({''strength':'secondary','case-level':false(),'fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>-1</assert-eq>
@@ -347,8 +333,7 @@
       <description>Check caseLevel - secondary - no effect</description>
       <created by="John Lumley" on="2014-05-02"/>
       <modified by="Michael Kay" on="2015-12-02" change="Bug 29308: disallow fallback behaviour"/>
-      <environment ref="UCA-collation.en"/>
-      <test>compare('Epee','Épee',concat($collation,'strength=secondary;caseLevel=yes;fallback=no'))</test>
+      <test>compare('Epee','Épee',collation({''strength':'secondary','case-level':true(),'fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>-1</assert-eq>
@@ -360,8 +345,7 @@
       <description>Check caseLevel - secondary - no effect</description>
       <created by="John Lumley" on="2014-05-02"/>
       <modified by="Michael Kay" on="2015-12-02" change="Bug 29308: disallow fallback behaviour"/>
-      <environment ref="UCA-collation.en"/>
-      <test>compare('Epee','Épee',concat($collation,'strength=secondary;caseLevel=no;fallback=no'))</test>
+      <test>compare('Epee','Épee',collation({''strength':'secondary','case-level':false(),'fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>-1</assert-eq>
@@ -373,8 +357,7 @@
       <description>Check caseFirst - upper</description>
       <created by="John Lumley" on="2014-05-02"/>
       <modified by="Michael Kay" on="2015-12-02" change="Bug 29308: disallow fallback behaviour"/>
-      <environment ref="UCA-collation.en"/>
-      <test>compare('ab','Ab',concat($collation,'caseFirst=upper;fallback=no'))</test>
+      <test>compare('ab','Ab',collation({'caseFirst=upper,'fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>1</assert-eq>
@@ -386,8 +369,7 @@
       <description>Check caseFirst - lower</description>
       <created by="John Lumley" on="2014-05-02"/>
       <modified by="Michael Kay" on="2015-12-02" change="Bug 29308: disallow fallback behaviour"/>
-      <environment ref="UCA-collation.en"/>
-      <test>compare('ab','Ab',concat($collation,'caseFirst=lower;fallback=no'))</test>
+      <test>compare('ab','Ab',collation({'caseFirst=lower,'fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>-1</assert-eq>
@@ -399,8 +381,7 @@
       <description>Check numeric - yes</description>
       <created by="John Lumley" on="2014-05-02"/>
       <modified by="Michael Kay" on="2015-12-02" change="Bug 29308: disallow fallback behaviour"/>
-      <environment ref="UCA-collation.en"/>
-      <test>compare('ab1a','ab12a',concat($collation,'numeric=yes;fallback=no'))</test>
+      <test>compare('ab1a','ab12a',collation({''numeric':true(),'fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>-1</assert-eq>
@@ -412,8 +393,7 @@
       <description>Check numeric - no</description>
       <created by="John Lumley" on="2014-05-02"/>
       <modified by="Michael Kay" on="2015-12-02" change="Bug 29308: disallow fallback behaviour"/>
-      <environment ref="UCA-collation.en"/>
-      <test>compare('ab1a','ab12a',concat($collation,'numeric=no;fallback=no'))</test>
+      <test>compare('ab1a','ab12a',collation({'numeric=no,'fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>1</assert-eq>
@@ -422,11 +402,10 @@
       </result>
    </test-case>
    <test-case name="fn-collation-034">
-      <description>Collation key with numeric=yes</description>
+      <description>Collation key with 'numeric':true()</description>
       <created by="Michael Kay" on="2019-04-09"/>
-      <environment ref="UCA-collation.en"/>
-      <test>collation-key('CHAP1', concat($collation,'strength=secondary;numeric=yes;fallback=no')) =
-         collation-key('chap1', concat($collation,'strength=secondary;numeric=yes;fallback=no'))</test>
+      <test>collation-key('CHAP1', collation({''strength':'secondary','numeric':true(),'fallback':false()})) =
+         collation-key('chap1', collation({''strength':'secondary','numeric':true(),'fallback':false()}))</test>
       <result>
          <any-of>
             <assert-true/>
@@ -438,8 +417,7 @@
    <test-case name="UCA-maxVariable-001">
       <description>maxVariable = space</description>
       <created by="Michael Kay" on="2016-09-28"/>
-      <environment ref="UCA-collation.en"/>
-      <test>compare('database','data type',concat($collation,'maxVariable=space;alternate=shifted;fallback=no'))</test>
+      <test>compare('database','data type',collation({'max-variable':'space','alternate':'shifted','fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>-1</assert-eq>
@@ -451,8 +429,7 @@
    <test-case name="UCA-maxVariable-002">
       <description>maxVariable = space</description>
       <created by="Michael Kay" on="2016-09-28"/>
-      <environment ref="UCA-collation.en"/>
-      <test>compare('database','data type',concat($collation,'maxVariable=space;alternate=non-ignorable;fallback=no'))</test>
+      <test>compare('database','data type',collation({'max-variable':'space','alternate','non-ignorable','fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>1</assert-eq>
@@ -464,8 +441,7 @@
    <test-case name="UCA-maxVariable-003">
       <description>maxVariable = space</description>
       <created by="Michael Kay" on="2016-09-28"/>
-      <environment ref="UCA-collation.en"/>
-      <test>compare('database','data base',concat($collation,'maxVariable=space;alternate=shifted;fallback=no'))</test>
+      <test>compare('database','data base',collation({'max-variable':'space','alternate':'shifted','fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>0</assert-eq>
@@ -477,8 +453,7 @@
    <test-case name="UCA-maxVariable-004">
       <description>maxVariable = space</description>
       <created by="Michael Kay" on="2016-09-28"/>
-      <environment ref="UCA-collation.en"/>
-      <test>compare('database','data base',concat($collation,'maxVariable=space;alternate=shifted;strength=4;fallback=no'))</test>
+      <test>compare('database','data base',collation({'max-variable':'space','alternate':'shifted','strength':'4','fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>1</assert-eq>
@@ -490,8 +465,7 @@
    <test-case name="UCA-maxVariable-005">
       <description>maxVariable = space</description>
       <created by="Michael Kay" on="2016-09-28"/>
-      <environment ref="UCA-collation.en"/>
-      <test>compare('database','data-type',concat($collation,'maxVariable=space;alternate=shifted;fallback=no'))</test>
+      <test>compare('database','data-type',collation({'max-variable':'space','alternate':'shifted','fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>1</assert-eq>
@@ -503,8 +477,7 @@
    <test-case name="UCA-maxVariable-006">
       <description>maxVariable = punct</description>
       <created by="Michael Kay" on="2016-09-28"/>
-      <environment ref="UCA-collation.en"/>
-      <test>compare('database','data-type',concat($collation,'maxVariable=punct;alternate=shifted;fallback=no'))</test>
+      <test>compare('database','data-type',collation({'max-variable':'punct','alternate':'shifted','fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>-1</assert-eq>
@@ -516,8 +489,7 @@
    <test-case name="UCA-maxVariable-007">
       <description>maxVariable = punct</description>
       <created by="Michael Kay" on="2016-09-28"/>
-      <environment ref="UCA-collation.en"/>
-      <test>compare('database','data-base',concat($collation,'maxVariable=punct;alternate=shifted;fallback=no'))</test>
+      <test>compare('database','data-base',collation({'max-variable':'punct','alternate':'shifted','fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>0</assert-eq>
@@ -529,8 +501,7 @@
    <test-case name="UCA-maxVariable-008">
       <description>maxVariable = punct</description>
       <created by="Michael Kay" on="2016-09-28"/>
-      <environment ref="UCA-collation.en"/>
-      <test>compare('data base','data-base',concat($collation,'maxVariable=punct;alternate=shifted;fallback=no'))</test>
+      <test>compare('data base','data-base',collation({'max-variable':'punct','alternate':'shifted','fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>0</assert-eq>
@@ -542,8 +513,7 @@
    <test-case name="UCA-maxVariable-009">
       <description>maxVariable = punct</description>
       <created by="Michael Kay" on="2016-09-28"/>
-      <environment ref="UCA-collation.en"/>
-      <test>compare('data base','data-base',concat($collation,'maxVariable=punct;alternate=shifted;strength=4;fallback=no'))</test>
+      <test>compare('data base','data-base',collation({'max-variable':'punct','alternate':'shifted','strength':'4','fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>-1</assert-eq>
@@ -555,8 +525,7 @@
    <test-case name="UCA-maxVariable-010">
       <description>maxVariable = punct</description>
       <created by="Michael Kay" on="2016-09-28"/>
-      <environment ref="UCA-collation.en"/>
-      <test>compare('data=base','database',concat($collation,'maxVariable=punct;alternate=shifted;fallback=no'))</test>
+      <test>compare('data=base','database',collation({'max-variable':'punct','alternate':'shifted','fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>-1</assert-eq>
@@ -568,8 +537,7 @@
    <test-case name="UCA-maxVariable-011">
       <description>maxVariable = symbol</description>
       <created by="Michael Kay" on="2016-09-28"/>
-      <environment ref="UCA-collation.en"/>
-      <test>compare('data=base','database',concat($collation,'maxVariable=symbol;alternate=shifted;fallback=no'))</test>
+      <test>compare('data=base','database',collation({'max-variable':'symbol','alternate':'shifted','fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>0</assert-eq>
@@ -581,8 +549,7 @@
    <test-case name="UCA-maxVariable-012">
       <description>maxVariable = symbol</description>
       <created by="Michael Kay" on="2016-09-28"/>
-      <environment ref="UCA-collation.en"/>
-      <test>compare('data=base','data base',concat($collation,'maxVariable=symbol;alternate=shifted;fallback=no'))</test>
+      <test>compare('data=base','data base',collation({'max-variable':'symbol','alternate':'shifted','fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>0</assert-eq>
@@ -594,8 +561,7 @@
    <test-case name="UCA-maxVariable-013">
       <description>maxVariable = symbol</description>
       <created by="Michael Kay" on="2016-09-28"/>
-      <environment ref="UCA-collation.en"/>
-      <test>compare('data=base','data$base',concat($collation,'maxVariable=symbol;alternate=shifted;fallback=no'))</test>
+      <test>compare('data=base','data$base',collation({'max-variable':'symbol','alternate':'shifted','fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>1</assert-eq>
@@ -607,8 +573,7 @@
    <test-case name="UCA-maxVariable-014">
       <description>maxVariable = currency</description>
       <created by="Michael Kay" on="2016-09-28"/>
-      <environment ref="UCA-collation.en"/>
-      <test>compare('data=base','data$base',concat($collation,'maxVariable=currency;alternate=shifted;fallback=no'))</test>
+      <test>compare('data=base','data$base',collation({'max-variable':'currency',;'alternate':'shifted',,'fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>0</assert-eq>
@@ -620,8 +585,7 @@
    <test-case name="UCA-maxVariable-015">
       <description>maxVariable = currency</description>
       <created by="Michael Kay" on="2016-09-28"/>
-      <environment ref="UCA-collation.en"/>
-      <test>compare('$10000','€10000',concat($collation,'maxVariable=currency;alternate=shifted;fallback=no'))</test>
+      <test>compare('$10000','€10000',collation({'max-variable':'currency','alternate':'shifted','fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>0</assert-eq>
@@ -631,10 +595,9 @@
    </test-case>
    
    <test-case name="UCA-maxVariable-016">
-      <description>maxVariable = currency with numeric=yes</description>
+      <description>maxVariable = currency with 'numeric':true()</description>
       <created by="Michael Kay" on="2016-09-28"/>
-      <environment ref="UCA-collation.en"/>
-      <test>compare('$10000','€9000',concat($collation,'maxVariable=currency;numeric=yes;alternate=shifted;fallback=no'))</test>
+      <test>compare('$10000','€9000',collation({'max-variable':'currency','numeric':true(),'alternate':'shifted','fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>1</assert-eq>
@@ -647,8 +610,7 @@
       <description>Check fr accent - primary</description>
       <created by="John Lumley" on="2014-05-02"/>
      <modified by="Michael Kay" on="2015-12-02" change="Bug 29308: disallow fallback behaviour"/>
-     <environment ref="UCA-collation"/>
-     <test>compare('pêche','péché',concat($collation,'strength=primary;lang=fr;fallback=no'))</test>
+     <test>compare('pêche','péché',collation({'strength':'primary','lang':'fr','fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>0</assert-eq>
@@ -660,8 +622,7 @@
       <description>Check fr accent - secondary</description>
       <created by="John Lumley" on="2014-05-02"/>
       <modified by="Michael Kay" on="2015-12-02" change="Bug 29308: disallow fallback behaviour"/>
-      <environment ref="UCA-collation"/>
-      <test>compare('pêche','péché',concat($collation,'strength=secondary;lang=fr;fallback=no'))</test>
+      <test>compare('pêche','péché',collation({'strength':'secondary','lang':fr,'fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>1</assert-eq>
@@ -673,8 +634,7 @@
       <description>Check fr-CA accent - secondary</description>
       <created by="John Lumley" on="2014-05-02"/>
       <modified by="Michael Kay" on="2015-12-02" change="Bug 29308: disallow fallback behaviour"/>
-      <environment ref="UCA-collation"/>
-      <test>compare('pêche','péché',concat($collation,'strength=secondary;lang=fr-CA;fallback=no'))</test>
+      <test>compare('pêche','péché',collation({'strength':'secondary','lang':'fr-CA','fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>-1</assert-eq>
@@ -686,8 +646,7 @@
       <description>Check en-US accent - primary</description>
       <created by="John Lumley" on="2014-05-02"/>
       <modified by="Michael Kay" on="2015-12-02" change="Bug 29308: disallow fallback behaviour"/>
-      <environment ref="UCA-collation"/>
-      <test>compare('pêche','péché',concat($collation,'strength=primary;lang=en-US;fallback=no'))</test>
+      <test>compare('pêche','péché',collation({'strength':'primary','lang':'en-US','fallback':false()}))</test>
       <result>
          <any-of>
             <assert-eq>0</assert-eq>
@@ -696,13 +655,12 @@
       </result>
    </test-case>
 
-   <!-\- <?include ../../john/collate/qt3.xml?>-\->
--->
+   <!-- <?include ../../john/collate/qt3.xml?>-->
    
    <test-case name="fn-collation-801">
       <description>strength Primary</description>
       <created by="Michael Kay" on="2024-03-17"/>
-      <test>collation(map{'strength':'primary','fallback':false()})</test>
+      <test>collation({'strength':'primary','fallback':false()})</test>
       <result>
          <all-of>
             <assert>contains($result,'strength=primary')</assert>
