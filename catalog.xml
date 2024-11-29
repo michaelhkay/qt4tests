@@ -384,6 +384,7 @@
     <test-set name="map-put"                            file="map/put.xml"/>
     <test-set name="map-remove"                         file="map/remove.xml"/>
     <test-set name="map-size"                           file="map/size.xml"/>
+    <test-set name="map-sort"                           file="map/sort.xml"/>
     <test-set name="map-values"                         file="map/values.xml"/>   
     
     <test-set name="array-append"                       file="array/append.xml"/>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test-set xmlns="http://www.w3.org/2010/09/qt-fots-catalog" name="map-sort" covers-40="PR1609">
+    <description>Tests for the map:sort function in XPath 4.0</description>
+    <dependency type="spec" value="XP40+ XQ40+"/>
+
+    <test-case name="map-sort-001">
+        <description>Trivial call</description>
+        <created by="Michael Kay" on="2024-11-27"/>
+        <environment ref="map"/>
+        <test>map:sort({}) => map:size()</test>
+        <result>
+            <assert-eq>0</assert-eq>
+        </result>
+    </test-case>
+    
+    <test-case name="map-sort-002">
+        <description>Trivial call</description>
+        <created by="Michael Kay" on="2024-11-27"/>
+        <environment ref="map"/>
+        <test>map:sort({"a":1})</test>
+        <result>
+            <assert-deep-eq>{"a":1}</assert-deep-eq>
+        </result>
+    </test-case>
+    
+    <test-case name="map-sort-003">
+        <description>Simple call</description>
+        <created by="Michael Kay" on="2024-11-27"/>
+        <environment ref="map"/>
+        <test>map:sort({"b":2, "c":3, "d":4, "a":1}) => map:keys()</test>
+        <result>
+            <assert-deep-eq>"a", "b", "c", "d"</assert-deep-eq>
+        </result>
+    </test-case>
+    
+    <test-case name="map-sort-004">
+        <description>Incremental addition</description>
+        <created by="Michael Kay" on="2024-11-27"/>
+        <environment ref="map"/>
+        <test>map:sort({"b":2, "q":3, "x":4, "h":1}) => map:put("f", 0) => map:put("j", 0) => map:keys()</test>
+        <result>
+            <assert-deep-eq>"b", "f", "h", "j", "q", "x"</assert-deep-eq>
+        </result>
+    </test-case>
+    
+    <test-case name="map-sort-005">
+        <description>Incremental removal</description>
+        <created by="Michael Kay" on="2024-11-27"/>
+        <environment ref="map"/>
+        <test>map:sort({"b":2, "q":3, "x":4, "h":1}) => map:put("f", 0) => map:put("j", 0) => map:remove("q") => map:keys()</test>
+        <result>
+            <assert-deep-eq>"b", "f", "h", "j", "x"</assert-deep-eq>
+        </result>
+    </test-case>
+    
+    <test-case name="map-sort-006">
+        <description>Multiple removal</description>
+        <created by="Michael Kay" on="2024-11-27"/>
+        <environment ref="map"/>
+        <test>map:sort({"b":2, "q":3, "x":4, "h":1}) => map:remove(("x", "y")) => map:put("x", 0) => map:remove("q") => map:keys()</test>
+        <result>
+            <assert-deep-eq>"b", "h", "x"</assert-deep-eq>
+        </result>
+    </test-case>
+    
+    <test-case name="map-sort-007">
+        <description>Mix strings, untypedAtomics, and anyURIs</description>
+        <created by="Michael Kay" on="2024-11-27"/>
+        <environment ref="map"/>
+        <test>map:sort({xs:string("b"):2, 
+                        xs:untypedAtomic("q"):3, 
+                        xs:anyURI("x"):4, 
+                        xs:NCName("h"):1}) 
+                  => map:remove(("x", "y")) 
+                  => map:put("x", 0) 
+                  => map:put(xs:ID("b"), 0) 
+                  => map:keys()</test>
+        <result>
+            <all-of>
+                <assert-deep-eq>"b", "h", "q", "x"</assert-deep-eq>
+                <assert>$result[1] instance of xs:ID</assert>
+                <assert>$result[2] instance of xs:NCName</assert>
+                <assert>$result[3] instance of xs:untypedAtomic</assert>
+                <assert>$result[4] instance of xs:string</assert>
+            </all-of>
+        </result>
+    </test-case>
+    
+</test-set>
